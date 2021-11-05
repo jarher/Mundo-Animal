@@ -5,7 +5,7 @@ const ctrlProducts = require('../controllers/products');
 //products
 router
   .route('/products')
-  .get(ctrlProducts.productsReadOne)
+  .get(ctrlProducts.productsReadAll)
   .post(ctrlProducts.productsCreate);
 
 router
