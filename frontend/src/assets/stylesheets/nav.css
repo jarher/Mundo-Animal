@@ -44,3 +44,27 @@
     opacity: 0;
   }
 }
+
+@media (max-width:425px){
+  .nav{
+    flex-direction: column;
+    align-items:center;
+    top:-21%;
+    background: #eaeaea;
+  }
+  .nav-item{
+    width: 90%;
+    border-radius: 5px;
+    border:1px solid #cae4fc;
+    text-align: center;
+    margin:1% 0;
+    padding: 1% 0;
+    background-color: var(--bs-light);
+  }
+  .nav-item a{
+    display: block;
+  }
+  .card{
+    margin-top:5%;
+  }
+}
