@@ -15,9 +15,21 @@ footer ul li a {
   color: var(--blue-light-2) !important;
   font-size: 1.3rem;
 }
-@media (min-width: 768px) {
+@media (max-width:768px){
+    footer ul {
+    justify-content: space-evenly;
+    border-bottom-color: var(--yellow-light-1);
+    border-bottom-style: solid;
+    border-bottom-width: 0.1rem;
+  }
+  footer ul li a {
+  font-size: 2rem;
+}
+}
+@media (min-width: 769px) {
   footer ul {
     justify-content: flex-end;
+    border: none;
   }
   footer ul li {
     margin-left: 5%;

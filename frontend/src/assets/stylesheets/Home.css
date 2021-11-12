@@ -1,3 +1,23 @@
-.category-cont{
-    margin:3% auto;
+.category-cont {
+  margin: 3% auto;
+}
+.carousel-caption {
+  text-shadow: 0px 0px 10px black;
+}
+.card-header {
+  font-weight: bolder;
+}
+
+@media (max-width: 768px) {
+  .navbar-brand {
+    width: 50px;
+  }
+  .card-header{
+      font-size: 1rem;
+  }
+}
+@media (min-width: 769px) {
+  .navbar-brand {
+    width: 70px;
+  }
 }

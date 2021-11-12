@@ -5,7 +5,7 @@ function Footer() {
     <footer>
       <Container>
         <Row>
-          <Col md={6} className="mt-3 order-1">
+          <Col md={6} className="mt-3 order-md-1">
             <ul>
               <li>
                 <a
@@ -39,7 +39,7 @@ function Footer() {
               </li>
             </ul>
           </Col>
-          <Col md={6} className="mt-3 order-0">
+          <Col md={6} className="mt-md-3 order-md-0">
             <p>&copy; 2021.Mundo Animal petshop. All rights reserved.</p>
           </Col>
         </Row>
