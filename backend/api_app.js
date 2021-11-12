@@ -1,41 +1,53 @@
-const createError = require('http-errors');
-const express = require('express');
-const cors = require('cors');
-const path = require('path');
-const cookieParser = require('cookie-parser');
-const logger = require('morgan');
-require('./models/db');
+var createError = require("http-errors");
+require("dotenv").config();
+var express = require("express");
+var cookieParser = require("cookie-parser");
+var logger = require("morgan");
+var cors = require("cors");
+const passport = require("passport");
+require("./models/db");
+require("./config/passport");
+
+const indexRouter = require("./routes/index");
 
 
-const productRouter = require('./routes/products');
+var app = express();
 
-const app = express();
+// view engine setup
 
 
-
-app.use(logger('dev'));
+app.use(logger("dev"));
 app.use(express.json());
 app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+//password middleware
+app.use(passport.initialize());
 
 
-app.use('/api', productRouter);
+app.use("/api", indexRouter);
+app.use("/api/admin", indexRouter);
+
+//error de autorización
+app.use((err, req, res, next) => {
+  if (err.name === "UnauthorizedError") {
+    res.status(401).json({ message: err.name + ": " + err.message });
+  }
+});
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+  res.locals.error = req.app.get("env") === "development" ? err : {};
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.send(err);
 });
 
 module.exports = app;

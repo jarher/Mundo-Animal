@@ -1,0 +1,5 @@
+footer{
+    background-color: var(--blue-dark-1);
+    color: var(--bs-light);
+    height: 10vh;
+}

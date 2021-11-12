@@ -1,0 +1,12 @@
+.App-header nav{
+    background-color: var(--blue-light-1);
+    color:var(--bs-light);
+}
+#menu-icon{
+    cursor:pointer;
+}
+@media (min-width:768px){
+    .navbar-brand {
+        width:50px
+    }
+}
