@@ -13,8 +13,8 @@ export default function CarouselComp () {
             alt="First slide"
           />
           <Carousel.Caption>
-            <h3>First slide label</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            <h3>Los productos con la mejor calidad</h3>
+            <p>Los encuentras aquí</p>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
@@ -23,11 +23,6 @@ export default function CarouselComp () {
             src={img_2}
             alt="Second slide"
           />
-
-          <Carousel.Caption>
-            <h3>Second slide label</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
           <img
@@ -37,9 +32,9 @@ export default function CarouselComp () {
           />
 
           <Carousel.Caption>
-            <h3>Third slide label</h3>
+            <h3>Dale a tu mascota</h3>
             <p>
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+              El mejor cuidado y la nutrición adecuada.
             </p>
           </Carousel.Caption>
         </Carousel.Item>

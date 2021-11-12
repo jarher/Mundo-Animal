@@ -4,7 +4,7 @@
     width: 100%;
     background: var(--bs-light);
     padding: 1% 0;
-    top:-7%;
+    top:-8%;
     animation-duration: 0.3s;
 }
 
@@ -23,7 +23,7 @@
 }
 @keyframes slidein {
   from {
-    top: -7%;
+    top: -8%;
     opacity: 0;
   }
 
@@ -40,7 +40,7 @@
   }
 
   to {
-    top: -7%;
+    top: -8%;
     opacity: 0;
   }
 }

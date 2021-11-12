@@ -1,5 +1,25 @@
-footer{
-    background-color: var(--blue-dark-1);
-    color: var(--bs-light);
-    height: 10vh;
+footer {
+  background-color: var(--blue-dark-1);
+  color: var(--blue-light-2);
+}
+footer ul {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+}
+footer ul li {
+  list-style: none;
+}
+footer ul li a {
+  text-decoration: none;
+  color: var(--blue-light-2) !important;
+  font-size: 1.3rem;
+}
+@media (min-width: 768px) {
+  footer ul {
+    justify-content: flex-end;
+  }
+  footer ul li {
+    margin-left: 5%;
+  }
 }

@@ -5,6 +5,12 @@
 #menu-icon{
     cursor:pointer;
 }
+.card-header{
+    border-bottom:none;
+    color:var(--blue-light-1);
+    font-size: 1.3rem;
+    width: 100%;
+}
 @media (min-width:768px){
     .navbar-brand {
         width:50px

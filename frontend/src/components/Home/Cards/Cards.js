@@ -6,43 +6,45 @@ import Accesories from "../LottieAccesories";
 import Toys from "../LottieToy";
 import Health from "../LottieHealth";
 
+
+
 export default function Cards() {
   return (
-    <Container>
-      <Row className="category-cont">
-        <Col>
-          <Card>
-            <Card.Header>Alimentos</Card.Header>
+    <Container className="category-cont">
+      <Row>
+        <Col className="gx-5">
+          <Card className="align-items-center">
+            <Card.Header className="text-center">Alimentos</Card.Header>
             <Food />
             <Card.Body>
-              <Button variant="success">Busca aquí</Button>
+              <Button variant="primary">Busca aquí</Button>
             </Card.Body>
           </Card>
         </Col>
-        <Col>
-          <Card>
-            <Card.Header>Accesorios</Card.Header>
+        <Col className="gx-5">
+          <Card className="align-items-center">
+            <Card.Header className="text-center">Accesorios</Card.Header>
             <Accesories />
             <Card.Body>
-              <Button variant="success">Busca aquí</Button>
+              <Button variant="primary">Busca aquí</Button>
             </Card.Body>
           </Card>
         </Col>
-        <Col>
-          <Card>
-            <Card.Header>Juguetes</Card.Header>
+        <Col className="gx-5">
+          <Card className="align-items-center">
+            <Card.Header className="text-center">Juguetes</Card.Header>
             <Toys />
             <Card.Body>
-              <Button variant="success">Busca aquí</Button>
+              <Button variant="primary">Busca aquí</Button>
             </Card.Body>
           </Card>
         </Col>
-        <Col>
-          <Card>
-            <Card.Header>Salud y Belleza</Card.Header>
+        <Col className="gx-5">
+          <Card className="align-items-center">
+            <Card.Header className="text-center">Salud y Belleza</Card.Header>
             <Health />
             <Card.Body>
-              <Button variant="success">Busca aquí</Button>
+              <Button variant="primary">Busca aquí</Button>
             </Card.Body>
           </Card>
         </Col>
