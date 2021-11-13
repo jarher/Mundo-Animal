@@ -3,6 +3,8 @@
 @import "../src//assets//stylesheets/Home.css";
 @import "../src/assets/stylesheets/about.css";
 @import "../src/assets/stylesheets/nav.css";
+@import "../src/assets/stylesheets/products.css";
+
 :root {
   --blue-light-1: #6fb6f8;
   --blue-light-2:#2E92EF;

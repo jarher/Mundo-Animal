@@ -22,6 +22,11 @@ export default function NavToggle() {
           </Link>
         </Nav.Item>
         <Nav.Item>
+          <a href="/#map">
+            ubicación
+          </a>
+        </Nav.Item>
+        <Nav.Item>
           <Link to="/contact">
             Contacto
           </Link>
