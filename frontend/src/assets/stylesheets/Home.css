@@ -13,7 +13,7 @@
   display: block;
 }
 .card button{
-  padding: 0.2rem;
+  padding: 0.2rem 0.5rem;
 }
 .card button:hover{
   background-color: var(--bs-light);
