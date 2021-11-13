@@ -5,7 +5,7 @@ import Food from "../LottieFood";
 import Accesories from "../LottieAccesories";
 import Toys from "../LottieToy";
 import Health from "../LottieHealth";
-
+import { Link } from "react-router-dom";
 
 
 export default function Cards() {
@@ -17,7 +17,9 @@ export default function Cards() {
             <Card.Header className="text-center">Alimentos</Card.Header>
             <Food />
             <Card.Body>
-              <Button variant="primary">Busca aquí</Button>
+              <Button variant="primary">
+                <Link to="/products">Busca aquí</Link>
+              </Button>
             </Card.Body>
           </Card>
         </Col>
@@ -26,7 +28,9 @@ export default function Cards() {
             <Card.Header className="text-center">Accesorios</Card.Header>
             <Accesories />
             <Card.Body>
-              <Button variant="primary">Busca aquí</Button>
+              <Button variant="primary">
+                <Link to="/products">Busca aquí</Link>
+              </Button>
             </Card.Body>
           </Card>
         </Col>
@@ -35,7 +39,9 @@ export default function Cards() {
             <Card.Header className="text-center">Juguetes</Card.Header>
             <Toys />
             <Card.Body>
-              <Button variant="primary">Busca aquí</Button>
+              <Button variant="primary">
+                <Link to="/products">Busca aquí</Link>
+              </Button>
             </Card.Body>
           </Card>
         </Col>
@@ -44,7 +50,9 @@ export default function Cards() {
             <Card.Header className="text-center">Salud y Belleza</Card.Header>
             <Health />
             <Card.Body>
-              <Button variant="primary">Busca aquí</Button>
+              <Button variant="primary">
+                <Link to="/products">Busca aquí</Link>
+              </Button>
             </Card.Body>
           </Card>
         </Col>

@@ -7,7 +7,20 @@
 .card-header {
   font-weight: bolder;
 }
-
+.card a{
+  color:var(--bs-light);
+  text-decoration: none;
+  display: block;
+}
+.card button{
+  padding: 0.2rem;
+}
+.card button:hover{
+  background-color: var(--bs-light);
+}
+.card button a:hover{
+  color:var(--bs-blue);
+}
 @media (max-width: 768px) {
   .navbar-brand {
     width: 50px;
