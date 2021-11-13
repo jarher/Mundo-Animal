@@ -1,4 +1,3 @@
-// import NavToggle from "../Nav";
 import NavComp from "./Navbar";
 
 
@@ -7,7 +6,6 @@ export default function Header() {
     <header className="App-header">
       <>
         <NavComp />
-        {/* <NavToggle /> */}
       </>
     </header>
   );

@@ -18,9 +18,9 @@ export default function NavComp(){
 
           <h1>Mundo Animal</h1>
 
-          <Navbar.Collapse className="justify-content-end">
+          <div className="justify-content-end">
             <MenuIcon icon="menu" />
-          </Navbar.Collapse>
+          </div>
         </Container>
       </Navbar>
     );
