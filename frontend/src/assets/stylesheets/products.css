@@ -1,3 +1,24 @@
 .productNav{
-    
+    list-style: none;
+    min-height: 100vh;
+    padding: 3% 0;
+    background-color: var(--yellow-light-1);
+}
+.linkNav{
+    text-align: center;
+    margin: 2% 0;
+    font-size: 1.2rem;
+    padding: 2% 0;
+    font-weight: bold;
+    color: var(--blue-dark-1);
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+
+.pr-active {
+    background: var(--blue-light-1);
+    color: var(--bs-light)!important;
+}
+.button-sale{
+    background-color: var(--bs-teal);
 }

@@ -5,7 +5,7 @@ import CarouselComp from "./CarouselComp/CarouselComp";
 function Home() {
   return (
     <>
-      <div>
+      
         <CarouselComp />
         <Cards />
         <div id="map" className="d-flex flex-column align-items-center">
@@ -20,7 +20,7 @@ function Home() {
             ></iframe>
           
         </div>
-      </div>
+      
     </>
   );
 }

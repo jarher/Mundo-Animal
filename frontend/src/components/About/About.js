@@ -9,11 +9,11 @@ function About () {
             Quienes somos
           </h2>
           <Row>
-            <div className="col-md-2">
+            <div className="d-xs-none col-sm-2">
               <PetDog />
             </div>
 
-            <div className="col-md-8 info-cont">
+            <div className="col-10 col-sm-8 info-cont">
               <h2>¡Bienvenido a Mundo Animal!</h2>
               <p>
                 Somos un emprendimiento familiar que nació del amor por las
