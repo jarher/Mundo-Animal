@@ -19,6 +19,9 @@
     background: var(--blue-light-1);
     color: var(--bs-light)!important;
 }
-.button-sale{
-    background-color: var(--bs-teal);
+.btn-sale{
+    background-color: var(--bs-teal)!important;
+}
+.btn-sale a:hover{
+    color:var(--bs-light)!important
 }

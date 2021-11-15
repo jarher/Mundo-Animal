@@ -1,11 +1,15 @@
 import { Col, Row } from "react-bootstrap";
 import CardProducts from "./CardProducts";
+import axios from "axios";
+import { APIHOST as host } from "../../app.json";
+import { useEffect, useState } from "react";
 
 export default function Products() {
+  const [prod, setProd] = useState([]);
+
   const changeClass = (e) => {
     const links_prod = document.querySelectorAll(".linkNav");
     let data_index = e.target.dataset.index;
-    console.log(data_index);
     links_prod.forEach((link, index) => {
       if (data_index == index) {
         link.classList.add("pr-active");
@@ -14,11 +18,41 @@ export default function Products() {
       }
     });
   };
+
+  const getProducts = () => {
+    axios
+      .get(`${host}/api/products`)
+      .then((response) => {
+        setProd(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
+  useEffect(() => {
+    getProducts();
+  }, []);
+
+  const Prods = prod.map(
+    (el) => (
+      <Col>
+        <CardProducts
+          title={el.nombre}
+          category={el.categoria}
+          description={el.descripcion}
+          price={el.precio}
+        />
+      </Col>
+    ),
+    [prod]
+  );
+
   return (
     <>
-      <div className="d-flex flex-sm-row flex-column">
-        <Col lg={2} md={3} >
-          <ul className="productNav">
+      <div className="d-flex flex-sm-row flex-column position-relative">
+        <Col lg={2} md={3}>
+          <ul className="productNav pt-md-3">
             <li
               className="linkNav pr-active"
               onClick={changeClass}
@@ -43,11 +77,8 @@ export default function Products() {
             </li>
           </ul>
         </Col>
-        <Col xs={12} md={10} className="d-flex flex-row flex-wrap">
-          <Row>
-            
-            
-          </Row>
+        <Col xs={12} md={10} className="d-flex flex-row flex-wrap p-4">
+          <Row>{Prods}</Row>
         </Col>
       </div>
     </>
