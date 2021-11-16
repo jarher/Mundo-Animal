@@ -11,7 +11,7 @@ export default function Products() {
     const links_prod = document.querySelectorAll(".linkNav");
     let data_index = e.target.dataset.index;
     links_prod.forEach((link, index) => {
-      if (data_index == index) {
+      if (data_index === index) {
         link.classList.add("pr-active");
       } else {
         link.classList.remove("pr-active");
