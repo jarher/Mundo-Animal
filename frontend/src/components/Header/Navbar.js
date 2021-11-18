@@ -5,8 +5,8 @@ import MenuIcon from "./MenuIcon";
 import { Link } from "react-router-dom";
 
 
-
 export default function NavComp(){
+  
     return (
       <Navbar>
         <Container>
@@ -19,7 +19,7 @@ export default function NavComp(){
           <h1>Mundo Animal</h1>
 
           <div className="justify-content-end">
-            <MenuIcon icon="menu" />
+            <MenuIcon />
           </div>
         </Container>
       </Navbar>

@@ -3,6 +3,7 @@ import CardProducts from "./CardProducts";
 import axios from "axios";
 import { APIHOST as host } from "../../app.json";
 import { useEffect, useState } from "react";
+import img  from "../../assets/images/cuidado-de-mascotas.png";
 
 export default function Products() {
   const [prod, setProd] = useState([]);
@@ -51,7 +52,11 @@ export default function Products() {
   return (
     <>
       <div className="d-flex flex-sm-row flex-column position-relative">
-        <Col lg={2} md={3}>
+        <Col lg={2} md={3} className="d-none d-md-block">
+          <div id="img-nav-prod">
+            <img src={img} alt="cuidado-de-mascotas" />
+          </div>
+
           <ul className="productNav pt-md-3">
             <li
               className="linkNav pr-active"
