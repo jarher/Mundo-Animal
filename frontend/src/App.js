@@ -9,7 +9,7 @@ import About from "./components/About/About";
 import Products from "./components/Products/Products";
 import Contact from "./components/Contact";
 import NavToggle from "./components/Nav";
-import Admin from './components/Admin';
+import Admin from './components/Admin/Admin';
 
 function App() {
   

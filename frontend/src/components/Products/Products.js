@@ -53,11 +53,8 @@ export default function Products() {
     <>
       <div className="d-flex flex-sm-row flex-column position-relative">
         <Col lg={2} md={3} className="d-none d-md-block">
-          <div id="img-nav-prod">
-            <img src={img} alt="cuidado-de-mascotas" />
-          </div>
 
-          <ul className="productNav pt-md-3">
+          <ul className="productNav pt-md-5">
             <li
               className="linkNav pr-active"
               onClick={changeClass}
@@ -80,7 +77,11 @@ export default function Products() {
             <li className="linkNav" onClick={changeClass} data-index="5">
               Productos de Higiene
             </li>
+            <div id="img-nav-prod">
+            <img src={img} alt="cuidado-de-mascotas" />
+          </div>
           </ul>
+          
         </Col>
         <Col xs={12} md={10} className="d-flex flex-row flex-wrap p-4">
           <Row>{Prods}</Row>
