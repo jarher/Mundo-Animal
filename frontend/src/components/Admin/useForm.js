@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export const useForm = (initialForm) => {
+export const useForm = (initialForm, validateForm) => {
   const [form, setForm] = useState(initialForm);
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
@@ -16,9 +16,21 @@ export const useForm = (initialForm) => {
       })
   };
 
-  const handleBlur = (e) => {};
+  const handleBlur = (e) => {
+    handleChange(e);
+    setErrors(validateForm(form));
+  };
 
-  const handleSubmit = (e) => {};
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setErrors(validateForm(form));
+
+    if(Object.keys(errors).length === 0){
+      alert('ok')
+      setLoading(true);
+      
+    }
+  };
 
   return {
     form,

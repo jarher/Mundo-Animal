@@ -1,0 +1,18 @@
+.form-cont {
+  border: 1px solid var(--bs-gray-400);
+  border-radius: 10px;
+  box-shadow: 0 0 10px var(--bs-gray-300);
+}
+.img-opacity {
+  opacity: 0.3;
+}
+
+.input-error {
+  color: var(--bs-danger);
+  font-weight: bold;
+  font-size: 1.15rem;
+}
+.form-title{
+  color: var(--blue-light-1);
+  font-weight: bold;
+}
