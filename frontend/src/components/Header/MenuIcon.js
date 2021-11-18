@@ -1,27 +1,33 @@
-import { useState } from "react";
+import React, { useRef } from "react";
 
-export default function MenuIcon(props) {
-  const [icon, setIcon] = useState(props.icon);
+export default function MenuIcon() {
+
+  let refIcon = useRef();
   
   const changeIcon = () => {
+    
     const nav = document.querySelector(".nav");
-    if (icon === "menu") {
-      setIcon("close");
+    if (refIcon.current.textContent === "menu") {
+      refIcon.current.textContent = "close";
       if (nav.classList.contains("slideout")) {
         nav.classList.remove("slideout");
       }
       nav.classList.add("slidein");
     } else {
-      setIcon("menu");
-
+      refIcon.current.textContent = "menu";
       nav.classList.remove("slidein");
       nav.classList.add("slideout");
     }
   };
 
   return (
-    <span id="menu-icon" className="material-icons" onClick={changeIcon}>
-      {icon}
+    <span
+      id="menu-icon"
+      className="material-icons"
+      ref={refIcon}
+      onClick={changeIcon}
+    >
+      menu
     </span>
   );
 }

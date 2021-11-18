@@ -1,8 +1,7 @@
-
-import './App.css';
+import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
-import Home from './components/Home/Home';
+import Home from "./components/Home/Home";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer";
@@ -13,6 +12,7 @@ import NavToggle from "./components/Nav";
 import Admin from './components/Admin';
 
 function App() {
+  
   return (
     <div className="App">
       <BrowserRouter>
