@@ -10,6 +10,7 @@ import About from "./components/About/About";
 import Products from "./components/Products/Products";
 import Contact from "./components/Contact";
 import NavToggle from "./components/Nav";
+import Admin from './components/Admin';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/products" element={<Products />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/admin" element={<Admin />} />
           </Routes>
         </div>
         <Footer />
