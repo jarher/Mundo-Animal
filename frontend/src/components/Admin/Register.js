@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Logo from "../../assets/images/logo-mundo-animal-mobile.png";
+import { useEffect } from "react";
 
 const initialForm = {
   name:"",
@@ -47,6 +48,12 @@ export default function Register() {
     handleSubmit,
   } = useForm(initialForm, validationsForm);
 
+  const registerRequest = () => {};
+
+  useEffect(() => {
+    registerRequest();
+  }, []);
+  
   return (
     <>
     <Row className="justify-content-center">
