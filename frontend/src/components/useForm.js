@@ -1,6 +1,7 @@
 // hook personalizado para validar formulario
 
 import { useState } from "react";
+import axios from "axios";
 
 export const useForm = (initialForm, validateForm) => {
   const [form, setForm] = useState(initialForm);
@@ -32,6 +33,25 @@ export const useForm = (initialForm, validateForm) => {
     }
   };
 
+  const handleContact = (e) => {
+    e.preventDefault();
+    if (Object.keys(errors).length === 0) {
+      alert("datos enviados satizfactoriamente");
+      setLoading(true);
+      axios.defaults.headers.post["Content-Type"] = "application/json";
+      axios
+        .post("https://formsubmit.co/ajax/jefferh33@gmail.com", {
+          name: form.name,
+          lastname:form.lastname,
+          email:form.email,
+          phone:form.phone,
+          comments: form.comments,
+        })
+        .then((response) => console.log(response))
+        .catch((error) => console.log(error));
+    }
+  }
+
   return {
     form,
     errors,
@@ -39,6 +59,7 @@ export const useForm = (initialForm, validateForm) => {
     response,
     handleChange,
     handleBlur,
-    handleSubmit
+    handleSubmit,
+    handleContact
   };
 };
