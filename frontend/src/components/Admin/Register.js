@@ -45,14 +45,8 @@ export default function Register() {
     response,
     handleChange,
     handleBlur,
-    handleSubmit,
+    handleRegister,
   } = useForm(initialForm, validationsForm);
-
-  const registerRequest = () => {};
-
-  useEffect(() => {
-    registerRequest();
-  }, []);
   
   return (
     <>
@@ -70,7 +64,7 @@ export default function Register() {
         </Col>
         <Col xs={10}>
           <Form
-            onSubmit={handleSubmit}
+            onSubmit={handleRegister}
             className="d-flex flex-column align-items-center"
           >
             <Form.Group className="mb-3 col-12" controlId="formBasicEmail">

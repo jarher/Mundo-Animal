@@ -22,7 +22,7 @@ export const useForm = (initialForm, validateForm) => {
     setErrors(validateForm(form));
   };
 
-  const handleSubmit = (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
     setErrors(validateForm(form));
 
@@ -30,6 +30,16 @@ export const useForm = (initialForm, validateForm) => {
       alert('ok')
       setLoading(true);
       
+    }
+  };
+
+  const handleRegister = (e) => {
+    e.preventDefault();
+    setErrors(validateForm(form));
+
+    if (Object.keys(errors).length === 0) {
+      alert("ok");
+      setLoading(true);
     }
   };
 
@@ -59,7 +69,8 @@ export const useForm = (initialForm, validateForm) => {
     response,
     handleChange,
     handleBlur,
-    handleSubmit,
+    handleLogin,
+    handleRegister,
     handleContact
   };
 };

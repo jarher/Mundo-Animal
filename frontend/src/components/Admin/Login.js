@@ -39,14 +39,8 @@ export default function Login() {
     response,
     handleChange,
     handleBlur,
-    handleSubmit,
+    handleLogin,
   } = useForm(initialForm, validationsForm);
-
-  const loginRequest = () => {};
-
-  useEffect(() => {
-    loginRequest();
-  }, []);
 
   return (
     <>
@@ -64,7 +58,7 @@ export default function Login() {
           </Col>
           <Col xs={10}>
             <Form
-              onSubmit={handleSubmit}
+              onSubmit={handleLogin}
               className="d-flex flex-column align-items-center"
             >
               <Form.Group className="mb-3 col-12" controlId="formBasicEmail">
