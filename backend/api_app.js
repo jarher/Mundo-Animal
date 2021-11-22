@@ -26,7 +26,7 @@ app.use(passport.initialize());
 
 
 app.use("/api", indexRouter);
-app.use("/api/admin", indexRouter);
+app.use("/api/auth", indexRouter);
 
 //error de autorización
 app.use((err, req, res, next) => {

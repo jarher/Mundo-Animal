@@ -12,6 +12,11 @@ import NavToggle from "./components/Nav";
 import React from "react";
 import Login from "./components/Admin/Login";
 import Register from "./components/Admin/Register";
+import Woops404 from "./components/Error404";
+import Admin from "./components/Admin/Admin";
+import SecurityProvider from "./components/Securityprovider";
+import SecureRoute from "./components/SecurityRoute";
+
 export const menuState = "menu";
 
 function App() {
@@ -29,9 +34,15 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/products" element={<Products />} />
               <Route path="/contact" element={<Contact />} />
-              <Route path="/admin/login" element={<Login />} />
-              <Route path="/admin/register" element={<Register />} />
+              <Route path="/auth/login" element={<Login />} />
+              <Route path="/auth/register" element={<Register />} />
+              <Route path="*" element={<Woops404 />} />
             </Routes>
+            {/* <SecurityProvider>
+              <SecureRoute path="/admin">
+                <Admin />
+              </SecureRoute>
+            </SecurityProvider> */}
           </div>
         <Footer />
       </BrowserRouter>

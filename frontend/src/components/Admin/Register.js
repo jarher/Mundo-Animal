@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Logo from "../../assets/images/logo-mundo-animal-mobile.png";
-// import { useEffect } from "react";
+import { Container } from "react-bootstrap";
 
 const initialForm = {
   name:"",
@@ -50,74 +50,79 @@ export default function Register() {
   
   return (
     <>
-    <Row className="justify-content-center">
-      <Col
-        xs={10}
-        sm={8}
-        md={6}
-        lg={3}
-        className="d-flex flex-column align-items-center form-cont mt-5 pb-3"
-      >
-        <h2 className="mt-3 form-title">Regístrate</h2>
-        <Col className="mt-3 mb-3 img-opacity">
-          <img src={Logo} alt="mundo-animal-logo" />
-        </Col>
-        <Col xs={10}>
-          <Form
-            onSubmit={handleRegister}
-            className="d-flex flex-column align-items-center"
+      <Container>
+        <Row className="justify-content-center">
+          <Col
+            xs={10}
+            sm={8}
+            md={6}
+            lg={3}
+            className="d-flex flex-column align-items-center form-cont mt-5 pb-3"
           >
-            <Form.Group className="mb-3 col-12" controlId="formBasicEmail">
-              <Form.Control
-                type="text"
-                placeholder="Nombre"
-                name="name"
-                value={form.name}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                required
-              />
-              {errors.name && (
-                <p className="input-error mt-2">{errors.name}</p>
-              )}
-            </Form.Group>
-            <Form.Group className="mb-3 col-12" controlId="formBasicEmail">
-              <Form.Control
-                type="email"
-                placeholder="Email"
-                name="email"
-                value={form.email}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                required
-              />
-              {errors.email && (
-                <p className="input-error mt-2">{errors.email}</p>
-              )}
-            </Form.Group>
+            <h2 className="mt-3 form-title">Regístrate</h2>
+            <Col className="mt-3 mb-3 img-opacity">
+              <img src={Logo} alt="mundo-animal-logo" />
+            </Col>
+            <Col xs={10}>
+              <Form
+                onSubmit={handleRegister}
+                className="d-flex flex-column align-items-center"
+              >
+                <Form.Group className="mb-3 col-12" controlId="formBasicEmail">
+                  <Form.Control
+                    type="text"
+                    placeholder="Nombre"
+                    name="name"
+                    value={form.name}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    required
+                  />
+                  {errors.name && (
+                    <p className="input-error mt-2">{errors.name}</p>
+                  )}
+                </Form.Group>
+                <Form.Group className="mb-3 col-12" controlId="formBasicEmail">
+                  <Form.Control
+                    type="email"
+                    placeholder="Email"
+                    name="email"
+                    value={form.email}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    required
+                  />
+                  {errors.email && (
+                    <p className="input-error mt-2">{errors.email}</p>
+                  )}
+                </Form.Group>
 
-            <Form.Group className="mb-3 col-12" controlId="formBasicPassword">
-              <Form.Control
-                type="password"
-                placeholder="Contraseña"
-                name="password"
-                value={form.password}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                required
-              />
-              {errors.password && (
-                <p className="input-error mt-2">{errors.password}</p>
-              )}
-            </Form.Group>
+                <Form.Group
+                  className="mb-3 col-12"
+                  controlId="formBasicPassword"
+                >
+                  <Form.Control
+                    type="password"
+                    placeholder="Contraseña"
+                    name="password"
+                    value={form.password}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    required
+                  />
+                  {errors.password && (
+                    <p className="input-error mt-2">{errors.password}</p>
+                  )}
+                </Form.Group>
 
-            <Button type="submit" value="enviar" className="col-4">
-              Enviar
-            </Button>
-          </Form>
-        </Col>
-      </Col>
-    </Row>
+                <Button type="submit" value="enviar" className="col-4">
+                  Enviar
+                </Button>
+              </Form>
+            </Col>
+          </Col>
+        </Row>
+      </Container>
     </>
   );
 }

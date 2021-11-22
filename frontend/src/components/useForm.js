@@ -2,6 +2,9 @@
 import { useState } from "react";
 import axios from "axios";
 import { APIHOST as host } from "../app.json";
+import { Route } from "react-router";
+
+
 
 export const useForm = (initialForm, validateForm) => {
   const [form, setForm] = useState(initialForm);
@@ -30,14 +33,18 @@ export const useForm = (initialForm, validateForm) => {
       alert("ok");
       setLoading(true);
       axios
-        .post(`${host}/api/admin/login`, {
+        .post(`${host}/api/auth/login`, {
           email: form.email,
           password: form.password,
         })
         .then((res) => {
           localStorage.setItem("token", res.data.token);
-          
-          console.log(res);
+          if(isLoggeIn()){
+            const token = localStorage.getItem('token');
+            const { email, name } = JSON.parse(atob(token.split('.')[1]));
+            console.log(email, name );
+            navigator.push('/admin');
+          }
         })
         .catch((err) => {
           console.log(err);
@@ -45,7 +52,6 @@ export const useForm = (initialForm, validateForm) => {
     }
   };
 
-  
   const handleRegister = (e) => {
     e.preventDefault();
     setErrors(validateForm(form));
@@ -54,7 +60,7 @@ export const useForm = (initialForm, validateForm) => {
       alert("ok");
       setLoading(true);
       axios
-        .post(`${host}/api/admin/register`, {
+        .post(`${host}/api/auth/register`, {
           name: form.name,
           email: form.email,
           password: form.password,
@@ -86,6 +92,15 @@ export const useForm = (initialForm, validateForm) => {
     }
   };
 
+  const isLoggeIn = () => {
+    const token = localStorage.getItem('token');
+    if(token){
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      return payload.exp > (Date.now() / 1000);
+    }else{
+      return false;
+    }
+  }
   return {
     form,
     errors,

@@ -8,6 +8,9 @@
   animation-duration: 0.3s;
   box-shadow: 0 3px 10px var(--bs-gray-400);
 }
+.navbar-brand{
+  margin-right: 0 !important;
+}
 
 .nav .nav-item a {
   text-decoration: none;
@@ -54,6 +57,7 @@
   list-style: none;
   margin-bottom: 0;
 }
+
 @media (max-width: 768px) {
   .nav {
     flex-direction: column;
@@ -76,9 +80,7 @@
   .card {
     margin-top: 5%;
   }
-  /* #nav-dropdown{
-  display: inline;
-} */
+  
   #link-products {
     display: none;
   }
