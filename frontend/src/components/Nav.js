@@ -44,32 +44,32 @@ export default function NavToggle() {
             >
               <li>
                 <a
-                  class="link-dark"
+                  className="link-dark"
                   href="https://www.facebook.com/Mundo-animal-pet-shop-109439561382295"
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <i class="bi bi-facebook"></i>
+                  <i className="bi bi-facebook"></i>
                 </a>
               </li>
               <li>
                 <a
-                  class="link-dark"
+                  className="link-dark"
                   href="https://www.instagram.com/mundo_animalps/"
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <i class="bi bi-instagram"></i>
+                  <i className="bi bi-instagram"></i>
                 </a>
               </li>
               <li>
                 <a
-                  class="link-dark"
+                  className="link-dark"
                   href="https://api.whatsapp.com/send?phone=573222209054"
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <i class="bi bi-whatsapp"></i>
+                  <i className="bi bi-whatsapp"></i>
                 </a>
               </li>
             </ul>

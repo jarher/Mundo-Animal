@@ -76,11 +76,11 @@ export const useForm = (initialForm, validateForm) => {
   const handleContact = (e) => {
     e.preventDefault();
     if (Object.keys(errors).length === 0) {
-      alert("datos enviados satizfactoriamente");
+      alert("datos enviados satisfactoriamente");
       setLoading(true);
       axios.defaults.headers.post["Content-Type"] = "application/json";
       axios
-        .post("https://formsubmit.co/ajax/jefferh33@gmail.com", {
+        .post("https://formsubmit.co/ajax/mundoanimalacacias@gmail.com", {
           name: form.name,
           lastname: form.lastname,
           email: form.email,
