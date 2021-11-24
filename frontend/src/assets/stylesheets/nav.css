@@ -4,13 +4,19 @@
   width: 100%;
   background: var(--bs-light);
   padding: 1% 0;
-  top: -8%;
+  top: -10%;
   animation-duration: 0.3s;
+  box-shadow: 0 3px 10px var(--bs-gray-400);
+}
+.navbar-brand{
+  margin-right: 0 !important;
 }
 
 .nav .nav-item a {
   text-decoration: none;
   color: var(--blue-light-2);
+  font-size: 1.15rem;
+  font-weight: bold;
 }
 .slidein {
   animation-name: slidein;
@@ -43,9 +49,7 @@
     opacity: 0;
   }
 }
-/* #nav-dropdown{
-  display: none;
-} */
+
 #link-products {
   display: inline-flex;
 }
@@ -53,6 +57,7 @@
   list-style: none;
   margin-bottom: 0;
 }
+
 @media (max-width: 768px) {
   .nav {
     flex-direction: column;
@@ -75,9 +80,7 @@
   .card {
     margin-top: 5%;
   }
-  /* #nav-dropdown{
-  display: inline;
-} */
+  
   #link-products {
     display: none;
   }

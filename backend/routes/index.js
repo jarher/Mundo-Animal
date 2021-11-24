@@ -15,13 +15,13 @@ const ctrlAuth = require("../controllers/authentication");
 router
   .route("/products")
   .get(ctrlProducts.productsReadAll)
-  .post(auth, ctrlProducts.productsCreate);
+  .post(ctrlProducts.productsCreate);
 
 router
   .route("/products/:productid")
   .get(ctrlProducts.productsReadOne)
-  .put(auth, ctrlProducts.productUpdateOne)
-  .delete(auth, ctrlProducts.productsDeleteOne);
+  .put(ctrlProducts.productUpdateOne)
+  .delete(ctrlProducts.productsDeleteOne);
 
 //admin
 

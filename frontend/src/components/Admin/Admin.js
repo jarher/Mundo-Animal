@@ -1,43 +1,211 @@
-import React from "react";
-import {
-  Navbar,
-  Nav,
-  Form,
-  FormControl,
-  Button,
-} from "react-bootstrap";
+import RowProducts from "./RowProducts";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { APIHOST as host } from "../../app.json";
+import { Container, Form, Modal, Row } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
+import { useFormAdmin } from "./useFormAdmin";
+
+
+const initialForm = {
+  name: "",
+  category: "",
+  price: "",
+  description: "",
+  // imgUrl: "",
+};
+
+const validationsForm = (form) => {
+  let errors = {};
+  let regexName = /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/;
+  let regexCategory = /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/;
+  let regexPrice = /^[0-9\s]+$/;
+  let regexDescription = /^.{1,255}$/;
+
+  if (!form.name.trim()) {
+    errors.name = "El campo nombre es requerido";
+  } else if (!regexName.test(form.name.trim())) {
+    errors.name = "No se aceptan signos diferentes a letras";
+  }
+
+  if (!form.category.trim()) {
+    errors.category = "El campo descripción es requerido";
+  } else if (!regexCategory.test(form.category.trim())) {
+    errors.category = "No se aceptan signos diferentes a letras";
+  }
+
+  if (!form.price.trim()) {
+    errors.price = "El campo de precio es requerido";
+  } else if (!regexPrice.test(form.price.trim())) {
+    errors.price = "No se aceptan signos diferentes a números";
+  }
+
+  if (!form.description.trim()) {
+    errors.description = "El campo descripción es requerido";
+  } else if (!regexDescription.test(form.description.trim())) {
+    errors.description = "ha superado el límite de palabras permitido";
+  }
+
+  return errors;
+};
 
 export default function Admin() {
+
+  const {
+    form,
+    errors,
+    handleChange,
+    handleBlur,
+    handleFormCreate,
+  } = useFormAdmin(initialForm, validationsForm);
+
+  const [prod, setProd] = useState([]);
+  const [show, setShow] = useState(false);
+
+  const getProducts = () => {
+    axios
+      .get(`${host}/api/products`)
+      .then((response) => {
+        setProd(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
+  useEffect(() => {
+    getProducts();
+  }, []);
+
+  //lista de productos
+  const rowProds = prod.map(
+    (element, index) => (
+      <RowProducts
+        key={index}
+        item={++index}
+        nombre={element.nombre}
+        categoria={element.categoria}
+        precio={element.precio}
+        descripcion={element.descripcion}
+        imagenUrl={element.imagenUrl}
+      />
+    ),
+    [prod]
+  );
+
+  //funcion para ventana modal
+
+  const handleClose = () => setShow(false);
+
+  const handleShow = () => setShow(true);
+
   return (
-    <div>
-      <div className="row">
-        <div className="col-5">
-          <Navbar bg="light" expand="lg">
-            <Nav defaultActiveKey="/home" as="ul">
-              <Nav.Item as="li">
-                <Nav.Link href="/home">Productos</Nav.Link>
-              </Nav.Item>
-              <Nav.Item as="li">
-              <Form className="d-flex col-12 flex-row">
-                  <FormControl
-                    type="search"
-                    placeholder="Search"
-                    className="me-2"
-                    aria-label="Search"
-                  />
-                  <Button variant="outline-success"><span class="material-icons">
-                search
-                </span>
-                </Button>
-                </Form>
-              </Nav.Item>
-              <Nav.Item as="li">
-              
-              </Nav.Item>
-            </Nav>
-          </Navbar>
-        </div>
-      </div>
-    </div>
+    <>
+      <Container>
+        <Button className="mt-2 add-prod" onClick={handleShow}>
+          Agregar nuevo producto
+        </Button>
+
+        <Modal
+          show={show}
+          onHide={handleClose}
+          backdrop="static"
+          keyboard={false}
+        >
+          <Modal.Header closeButton>
+            <Modal.Title>Nuevo Producto</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Form onClick={handleFormCreate}>
+              <Form.Group className="mb-3" controlId="formBasicName">
+                <Form.Label>Nombre</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="ingresa nombre del producto"
+                  name="name"
+                  value={form.name}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  required
+                />
+                {errors.name && (
+                  <p className="input-error mt-2">{errors.name}</p>
+                )}
+              </Form.Group>
+
+              <Form.Group className="mb-3" controlId="formBasicCategory">
+                <Form.Label>Categoría</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="ingresa la categoría"
+                  name="category"
+                  value={form.category}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  required
+                />
+                {errors.category && (
+                  <p className="input-error mt-2">{errors.category}</p>
+                )}
+              </Form.Group>
+
+              <Form.Group className="mb-3" controlId="formBasicPrice">
+                <Form.Label>Precio</Form.Label>
+                <Form.Control
+                  type="number"
+                  placeholder="ingresa el precio"
+                  name="price"
+                  value={form.price}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  required
+                />
+                {errors.price && (
+                  <p className="input-error mt-2">{errors.price}</p>
+                )}
+              </Form.Group>
+
+              <Form.Group
+                className="mb-3"
+                controlId="exampleForm.ControlTextarea1"
+              >
+                <Form.Label>descripcion</Form.Label>
+                <Form.Control
+                  as="textarea"
+                  rows={3}
+                  placeholder="describe el nuevo producto"
+                  name="description"
+                  value={form.description}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  required
+                />
+                {errors.description && (
+                  <p className="input-error mt-2">{errors.description}</p>
+                )}
+              </Form.Group>
+
+              <Form.Group className="mb-3" controlId="formBasicImage">
+                <Form.Label>Sube una imagen</Form.Label>
+                <Form.Control
+                  type="file"
+                  name="imgUrl"
+                  value={form.imgUrl}
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  required
+                />
+              </Form.Group>
+
+              <Button variant="primary" type="submit">
+                Crear nuevo producto
+              </Button>
+            </Form>
+          </Modal.Body>
+        </Modal>
+        {rowProds}
+      </Container>
+    </>
   );
 }

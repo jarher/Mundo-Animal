@@ -44,7 +44,7 @@
 }
 @media (min-width: 769px) {
   .navbar-brand {
-    width: 70px;
+    width: 60px;
   }
   #map-location {
     width: 500px;

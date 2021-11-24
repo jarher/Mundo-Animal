@@ -36,8 +36,8 @@ export default function Products() {
   }, []);
 
   const Prods = prod.map(
-    (el) => (
-      <Col>
+    (el, index) => (
+      <Col className="mb-3" data-number={index}>
         <CardProducts
           title={el.nombre}
           category={el.categoria}
@@ -53,8 +53,7 @@ export default function Products() {
     <>
       <div className="d-flex flex-sm-row flex-column position-relative">
         <Col lg={2} md={3} className="d-none d-md-block">
-
-          <ul className="productNav pt-md-5">
+          <ul className="productNav pt-md-3">
             <li
               className="linkNav pr-active"
               onClick={changeClass}
@@ -78,8 +77,8 @@ export default function Products() {
               Productos de Higiene
             </li>
             <div id="img-nav-prod">
-            <img src={img} alt="cuidado-de-mascotas" />
-          </div>
+              <img src={img} alt="cuidado-de-mascotas" />
+            </div>
           </ul>
           
         </Col>
