@@ -37,7 +37,7 @@ export default function Products() {
 
   const Prods = prod.map(
     (el, index) => (
-      <Col className="mb-3" data-number={index}>
+      <Col className="mb-3 col-md-5 col-sm-5 col-9" data-number={index}>
         <CardProducts
           title={el.nombre}
           category={el.categoria}
@@ -82,9 +82,9 @@ export default function Products() {
           </ul>
           
         </Col>
-        <Col xs={12} md={10} className="d-flex flex-row flex-wrap p-4">
-          <Row>{Prods}</Row>
-        </Col>
+        <div xs={12} md={10} className="d-flex flex-row flex-wrap mt-4 justify-content-evenly">
+          {Prods}  
+        </div>
       </div>
     </>
   );

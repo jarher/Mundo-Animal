@@ -32,8 +32,8 @@ export default function Login() {
   const {
     form,
     errors,
-    loading,
-    response,
+    // loading,
+    // response,
     handleChange,
     handleBlur,
     handleLogin,

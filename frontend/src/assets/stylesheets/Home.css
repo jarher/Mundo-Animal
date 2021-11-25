@@ -1,6 +1,16 @@
 .category-cont {
   margin: 3% auto;
 }
+.category-cont button{
+  background-color: var(--blue-light-1)!important;
+  border:none
+}
+.category-cont button:hover{
+  background-color: var(--blue-dark-1)!important;
+}
+.category-cont button a:hover{
+  color: var(--yellow-1) !important;
+}
 .carousel-caption {
   text-shadow: 0px 0px 10px black;
 }
