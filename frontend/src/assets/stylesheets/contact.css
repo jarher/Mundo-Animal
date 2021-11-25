@@ -1,27 +1,19 @@
-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 80vw ;
-    height: auto;
-}
 
-#Contac-cont {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 80vw ;
-    height: auto;
+.btn-contact{
+    background-color: var(--blue-light-1)!important;
+    border: none;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
-
-form Button{
+.btn-contact:hover{
+    background-color: var(--blue-dark-1)!important;
+    color:var(--yellow-1)!important;
+}
+form button{
     padding: 0.2rem 0.5rem;
 }
-form Button:hover{
+form button:hover{
     background-color: var(--bs-light);
 }
-form Button a:hover{
+form button a:hover{
     color:var(--bs-blue);
 }

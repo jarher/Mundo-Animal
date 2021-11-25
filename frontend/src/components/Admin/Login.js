@@ -47,8 +47,8 @@ export default function Login() {
             xs={10}
             sm={8}
             md={6}
-            lg={3}
-            className="d-flex flex-column align-items-center form-cont mt-5 pb-3"
+            lg={4}
+            className="d-flex flex-column align-items-center form-cont mt-5 mb-5 pb-3"
           >
             <h2 className="mt-3 form-title">Iniciar sesión</h2>
             <Col className="mt-3 mb-3 img-opacity">

@@ -12,7 +12,7 @@ const initialForm = {
   category: "",
   price: "",
   description: "",
-  // imgUrl: "",
+  imgUrl: "",
 };
 
 const validationsForm = (form) => {
@@ -117,7 +117,7 @@ export default function Admin() {
             <Modal.Title>Nuevo Producto</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <Form onClick={handleFormCreate}>
+            <Form onSubmit={handleFormCreate}>
               <Form.Group className="mb-3" controlId="formBasicName">
                 <Form.Label>Nombre</Form.Label>
                 <Form.Control
@@ -194,7 +194,7 @@ export default function Admin() {
                   value={form.imgUrl}
                   onBlur={handleBlur}
                   onChange={handleChange}
-                  required
+                  // required
                 />
               </Form.Group>
 

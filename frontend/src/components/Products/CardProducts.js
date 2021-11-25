@@ -7,18 +7,18 @@ export default function CardProducts (props) {
       <Card data-category={props.category}>
         <Card.Header>{props.title}</Card.Header>
         <Card.Body className="d-flex flex-row">
-          <div className="col-4">
+          <div className="col-5">
             <Card.Img variant="top" src={img} />
           </div>
 
           <div className="col-6 ms-3">
             <Card.Text>
               <p>
-                <span>Descripción: </span>
+                <span className="text-info fw-bold">Descripción: </span>
                 {props.description}
               </p>
               <p>
-                <span>Precio: </span>
+                <span className="text-info fw-bold">Precio: </span>
                 {props.price}
               </p>
             </Card.Text>

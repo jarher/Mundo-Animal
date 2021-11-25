@@ -28,7 +28,6 @@ export const useForm = (initialForm, validateForm) => {
     setErrors(validateForm(form));
 
     if (Object.keys(errors).length === 0) {
-      alert("ok");
       setLoading(true);
       axios
         .post(`${host}/api/auth/login`, {
@@ -41,11 +40,12 @@ export const useForm = (initialForm, validateForm) => {
             const token = localStorage.getItem('token');
             const { email, name } = JSON.parse(atob(token.split('.')[1]));
             console.log(email, name );
-            navigator.push('/admin');
+            alert('bienvenido')
           }
         })
         .catch((err) => {
           console.log(err);
+          alert('Error: email y/o contraseña incorrectos')
         });
     }
   };
@@ -55,7 +55,7 @@ export const useForm = (initialForm, validateForm) => {
     setErrors(validateForm(form));
 
     if (Object.keys(errors).length === 0) {
-      alert("ok");
+      
       setLoading(true);
       axios
         .post(`${host}/api/auth/register`, {
@@ -65,9 +65,9 @@ export const useForm = (initialForm, validateForm) => {
         })
         .then((res) => {
           localStorage.setItem("token", res.data.token);
-          
+          alert("registro realizado exitosamente");
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {console.log(err); alert("Error, el usuario ya existe")});
     }
   };
 

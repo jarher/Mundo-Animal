@@ -39,6 +39,10 @@
 #map h5{
   color:var(--blue-light-2);
 }
+#main-title {
+  color:var(--bs-light);
+  text-decoration: none;
+}
 @media (max-width: 768px) {
   .navbar-brand {
     width: 50px;

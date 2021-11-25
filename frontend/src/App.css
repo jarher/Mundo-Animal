@@ -6,6 +6,7 @@
 @import "../src/assets/stylesheets/products.css";
 @import "../src/assets/stylesheets/forms.css";
 @import "../src/assets/stylesheets/admin.css";
+@import "../src/assets/stylesheets/contact.css";
 
 :root {
   --blue-light-1: #6fb6f8;

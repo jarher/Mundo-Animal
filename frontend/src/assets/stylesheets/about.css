@@ -3,9 +3,8 @@
   margin-top: 4%;
 }
 .info-cont {
-  padding: 5%;
   background-color: #fff3dd;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   color: var(--blue-dark-1);
   font-weight: bold;
   border-radius: 10px;
@@ -14,4 +13,9 @@
 #main-title-info{
     color:var(--blue-light-1);
     margin-top:1%
+}
+@media (max-width:768px){
+  .info-cont{
+    margin: auto;
+  }
 }

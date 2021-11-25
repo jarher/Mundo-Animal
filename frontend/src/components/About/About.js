@@ -8,12 +8,12 @@ function About () {
           <h2 className="text-center" id="main-title-info">
             Quienes somos
           </h2>
-          <Row>
-            <div className="d-xs-none col-sm-3">
+          <Row className="d-flex flex-col flex-md-row">
+            <div className="d-none d-md-block col-sm-3">
               <PetDog />
             </div>
 
-            <div className="col-10 col-sm-7 info-cont p-5 mb-5">
+            <div className="col-10 col-sm-8 col-md-6 info-cont p-5 mb-5">
               <h2>¡Bienvenido a Mundo Animal!</h2>
               <p>
                 Somos un emprendimiento familiar que nació del amor por las

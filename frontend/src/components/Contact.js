@@ -158,7 +158,7 @@ function Contact() {
                 )}
               </Form.Group>
 
-              <Button className="btn mb-3" variant="primary" type="enviar">
+              <Button className="btn mb-3 btn-contact" variant="primary" type="enviar">
                 Enviar
               </Button>
             </Form>
