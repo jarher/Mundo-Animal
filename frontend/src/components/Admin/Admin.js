@@ -111,7 +111,7 @@ export default function Admin() {
           show={show}
           onHide={handleClose}
           backdrop="static"
-          keyboard={false}
+          keyboard={true}
         >
           <Modal.Header closeButton>
             <Modal.Title>Nuevo Producto</Modal.Title>

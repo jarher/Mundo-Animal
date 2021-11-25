@@ -21,6 +21,7 @@ app.use(express.json());
 app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use('/public',express.static(`${__dirname}/storage/imgs`))
 //password middleware
 app.use(passport.initialize());
 

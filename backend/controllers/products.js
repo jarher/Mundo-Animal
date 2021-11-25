@@ -20,8 +20,9 @@ const productsCreate = (req, res) => {
       categoria: req.body.category,
       precio: req.body.price,
       descripcion: req.body.description,
-      imagenUrl: req.body.imgUrl,
+      imagenUrl: req.body.imgUrl, 
     },
+
     (err, product) => {
       if (err) {
         res.status(400).json(err);

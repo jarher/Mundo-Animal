@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const {appConfig} = require('../config')
 
 const productSchema = new mongoose.Schema({
   nombre: {
@@ -22,5 +23,10 @@ const productSchema = new mongoose.Schema({
     require:true
   }
 });
+
+productSchema.methods.setImgUrl = function setImgUrl (filename){
+  const {host,port} = appConfig
+  this.imagenUrl = `${host}:${port}/public/${filename}`
+}
 
 mongoose.model('product', productSchema);
