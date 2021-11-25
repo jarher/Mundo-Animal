@@ -1,0 +1,27 @@
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80vw ;
+    height: auto;
+}
+
+#Contac-cont {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80vw ;
+    height: auto;
+}
+
+form Button{
+    padding: 0.2rem 0.5rem;
+}
+form Button:hover{
+    background-color: var(--bs-light);
+}
+form Button a:hover{
+    color:var(--bs-blue);
+}

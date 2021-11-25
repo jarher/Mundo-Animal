@@ -5,6 +5,7 @@
 @import "../src/assets/stylesheets/nav.css";
 @import "../src/assets/stylesheets/products.css";
 @import "../src/assets/stylesheets/forms.css";
+@import "../src/assets/stylesheets/admin.css";
 
 :root {
   --blue-light-1: #6fb6f8;

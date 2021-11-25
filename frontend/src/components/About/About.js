@@ -5,7 +5,7 @@ function About () {
     return (
       <>
         <Container className="about-cont">
-          <h2 class="text-center" id="main-title-info">
+          <h2 className="text-center" id="main-title-info">
             Quienes somos
           </h2>
           <Row>

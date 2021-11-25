@@ -12,7 +12,7 @@ export default function Products() {
     const links_prod = document.querySelectorAll(".linkNav");
     let data_index = e.target.dataset.index;
     links_prod.forEach((link, index) => {
-      if (data_index == index) {
+      if (data_index === index) {
         link.classList.add("pr-active");
       } else {
         link.classList.remove("pr-active");
@@ -36,8 +36,8 @@ export default function Products() {
   }, []);
 
   const Prods = prod.map(
-    (el) => (
-      <Col>
+    (el, index) => (
+      <Col className="mb-3 col-md-5 col-sm-5 col-9" data-number={index}>
         <CardProducts
           title={el.nombre}
           category={el.categoria}
@@ -80,10 +80,11 @@ export default function Products() {
               <img src={img} alt="cuidado-de-mascotas" />
             </div>
           </ul>
+          
         </Col>
-        <Col xs={12} md={10} className="d-flex flex-row flex-wrap p-4">
-          <Row>{Prods}</Row>
-        </Col>
+        <div xs={12} md={10} className="d-flex flex-row flex-wrap mt-4 justify-content-evenly">
+          {Prods}  
+        </div>
       </div>
     </>
   );
