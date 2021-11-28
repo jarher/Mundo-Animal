@@ -81,7 +81,7 @@ export default function Admin() {
   //lista de productos
   const rowProds = prod.map(
     (element, index) => (
-      <RowProducts
+      <RowProducts 
         key={index}
         item={++index}
         nombre={element.nombre}
@@ -190,11 +190,10 @@ export default function Admin() {
                 <Form.Label>Sube una imagen</Form.Label>
                 <Form.Control
                   type="file"
-                  name="imgUrl"
-                  value={form.imgUrl}
+                  name="filename"
                   onBlur={handleBlur}
                   onChange={handleChange}
-                  // required
+                  required
                 />
               </Form.Group>
 

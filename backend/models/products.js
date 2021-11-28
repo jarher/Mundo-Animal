@@ -24,9 +24,5 @@ const productSchema = new mongoose.Schema({
   }
 });
 
-productSchema.methods.setImgUrl = function setImgUrl (filename){
-  const {host,port} = appConfig
-  this.imagenUrl = `${host}:${port}/public/${filename}`
-}
 
 mongoose.model('product', productSchema);

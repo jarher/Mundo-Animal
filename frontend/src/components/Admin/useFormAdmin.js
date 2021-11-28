@@ -25,13 +25,14 @@ export const useFormAdmin = (initialForm, validateForm) => {
       alert("datos enviados satisfactoriamente");
     //   setLoading(true);
       axios.defaults.headers.post["Content-Type"] = "application/json";
+      
       axios
         .post(`${host}/api/products`, {
           name: form.name,
           category: form.category,
           price: form.price,
           description: form.description,
-          imgUrl: form.imgUrl,
+          imgUrl: form.file,
         })
         .then((response) => console.log(response))
         .catch((error) => console.log(error));
