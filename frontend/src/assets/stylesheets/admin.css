@@ -1,132 +1,40 @@
-#admin-form{
-    margin: 2% auto;;
-}
-table{
-    table-layout: fixed;
-    width: 100%;
-    border-collapse:collapse;
-}
-tbody{
-    vertical-align:top;
+.admin-form {
+  background: var(--yellow-light-2);
+  box-shadow: 3px 5px 15px var(--bs-gray-400);
+  border-radius: 10px;
 }
 
-td{
-    padding: 1% 0;
-    overflow: hidden;
+.admin-form-buttons button:nth-child(1) {
+  background-color: var(--blue-light-1);
 }
-.tr-head{
-    background-color: var(--yellow-light-2);
-}
-th{
-    padding: 0.5%;
-    text-align: center !important;
-    color: var(--blue-light-1);
-}
-th:nth-child(1){
-width: 5%;
-}
-th:nth-child(2){
-    width: 15%;
-}
-th:nth-child(3){
-    width: 15%;
-}
-th:nth-child(4){
-    width: 10%;
-}
-th:nth-child(5){
-    width: 20%
-}
-th:nth-child(6){
-    width: 15%;
+.admin-form-buttons button:nth-child(2) {
+  background-color: var(--bs-danger);
 }
 
-td:nth-child(1) p{
-text-align: center;
+.add-prod {
+  background-color: var(--blue-light-1) !important;
+  border: none !important;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
-td:nth-child(6) input:nth-child(1){
-    width: 40%;
-    margin: auto;
-    display: block;
+.add-prod:hover {
+  background-color: var(--blue-dark-1) !important;
+  color: var(--yellow-1) !important;
+  box-shadow: 0px 5px 10px var(--blue-light-1);
+  transform: scale(1.1);
 }
-#admin-form textarea,
-#admin-form input{
-    margin: auto;
-    display: block;
-    border-radius: 2px;
+.modal-dialog {
+  color: var(--blue-light-1);
 }
-#admin-form textarea{
-    width: 80%;
+.modal-dialog button[type="submit"] {
+  background-color: var(--blue-light-1);
+  border: none;
 }
-#admin-form input,
-#admin-form textarea{
-    border: 1px solid var(--bs-gray-500);
+.modal-title {
+  font-size: 1.1rem !important;
 }
-#admin-form input:focus,
-#admin-form textarea:focus{
-    box-shadow: 0 0 10px var(--blue-light-1);
-    border: 1px solid var(--bs-gray-100)!important;
-    outline: none;
-}
-input[type="file"] {
-    width: 84%;
-    font-size: 0.8rem;
-    margin-left: 10%;
-    margin-top: 4%;
-}
-#admin-form input#name,
-#admin-form input#category
-{
-    width: 90%;
-    margin: auto;
-}
-#admin-form input#price{
-    width: 80%;
-}
-.admin-form-buttons{
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-evenly;
-    margin-top: 5%;
-    
-}
-.admin-form-buttons button{
-    font-size: 0.8rem;
-    border: none;
-    border-radius: 5px;
-    font-size: 1.5rem;
-    color: var(--bs-light);
-    padding: 2%;
-    width: 25%;
-}
-.admin-form-buttons button:nth-child(1){
-    background-color: var(--blue-light-1);
-}
-.admin-form-buttons button:nth-child(2){
-background-color: var(--bs-danger);
-}
-tbody tr{
-    background-color: var(--bs-gray-100);
-}
-.add-prod{
-    background-color: var(--blue-light-1)!important;
-    border: none!important;
-    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-}
-.add-prod:hover{
-    background-color: var(--blue-dark-1)!important;
-    color: var(--yellow-1)!important;
-    box-shadow: 0px 5px 10px var(--blue-light-1);
-    transform: scale(1.1);
-}
-.modal-dialog{
-        color:var(--blue-light-1);
 
-}
-.modal-dialog button[type="submit"]{
-background-color: var(--blue-light-1);
-border: none;
-}
-.modal-title{
-    font-size: 1.1rem!important;
+@media (min-width: 1024px) {
+  .width-med {
+    width: 72%!important;
+  }
 }

@@ -3,16 +3,16 @@ import CardProducts from "./CardProducts";
 import axios from "axios";
 import { APIHOST as host } from "../../app.json";
 import { useEffect, useState } from "react";
-import img  from "../../assets/images/cuidado-de-mascotas.png";
+import img from "../../assets/images/cuidado-de-mascotas.png";
 
 export default function Products() {
   const [prod, setProd] = useState([]);
 
   const changeClass = (e) => {
     const links_prod = document.querySelectorAll(".linkNav");
-    
+
     let data_index = e.target.dataset.index;
-    
+
     links_prod.forEach((link, index) => {
       if (data_index == index) {
         link.classList.add("pr-active");
@@ -39,7 +39,10 @@ export default function Products() {
 
   const Prods = prod.map(
     (el, index) => (
-      <Col className="mb-3 ms-md-3 col-sm-5 col-9 card-cont" data-number={index}>
+      <Col
+        className="mb-3 ms-md-3 col-sm-5 col-9 card-cont"
+        data-number={index}
+      >
         <CardProducts
           title={el.nombre}
           category={el.categoria}
@@ -51,9 +54,10 @@ export default function Products() {
     [prod]
   );
 
+  if (Prods.length === 0) return <p>No hay productos </p>;
   return (
     <>
-      <div className="d-flex flex-sm-row flex-column position-relative">
+      <div className="d-flex flex-column flex-sm-row">
         <Col lg={2} md={3} className="d-none d-md-block">
           <ul className="productNav pt-md-3">
             <li
@@ -83,11 +87,7 @@ export default function Products() {
             </div>
           </ul>
         </Col>
-        <div
-          xs={12}
-          md={10}
-          className="d-flex flex-row flex-wrap mt-4 justify-content-start ms-md-3"
-        >
+        <div className="d-flex flex-sm-row flex-wrap mt-4 justify-content-start ms-md-3">
           {Prods}
         </div>
       </div>

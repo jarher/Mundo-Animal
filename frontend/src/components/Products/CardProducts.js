@@ -23,7 +23,7 @@ export default function CardProducts (props) {
               </p>
             </Card.Text>
             <Button variant="primary" className="btn btn-sale">
-              <a href="https://api.whatsapp.com/send?phone=573222209054">
+              <a href="https://api.whatsapp.com/send?phone=573222209054" target="_blank">
                 Comprar
               </a>
             </Button>

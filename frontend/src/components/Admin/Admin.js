@@ -1,11 +1,10 @@
-import RowProducts from "./RowProducts";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { APIHOST as host } from "../../app.json";
 import { Container, Form, Modal, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
-import { useFormAdmin } from "./useFormAdmin";
-
+import ProductList from "./ProductList";
+import { useForm } from "../useForm";
 
 const initialForm = {
   name: "",
@@ -51,14 +50,6 @@ const validationsForm = (form) => {
 
 export default function Admin() {
 
-  const {
-    form,
-    errors,
-    handleChange,
-    handleBlur,
-    handleFormCreate,
-  } = useFormAdmin(initialForm, validationsForm);
-
   const [prod, setProd] = useState([]);
   const [show, setShow] = useState(false);
 
@@ -67,7 +58,7 @@ export default function Admin() {
       .get(`${host}/api/products`)
       .then((response) => {
         setProd(response.data);
-        console.log(response.data);
+        // console.log(response.data);
       })
       .catch((error) => {
         console.error(error);
@@ -78,21 +69,16 @@ export default function Admin() {
     getProducts();
   }, []);
 
-  //lista de productos
-  const rowProds = prod.map(
-    (element, index) => (
-      <RowProducts 
-        key={index}
-        item={++index}
-        nombre={element.nombre}
-        categoria={element.categoria}
-        precio={element.precio}
-        descripcion={element.descripcion}
-        imagenUrl={element.imagenUrl}
-      />
-    ),
-    [prod]
-  );
+  //manejo del formulario
+  const {
+    form,
+    errors,
+    handleChange,
+    handleBlur,
+    handleCreateProd,
+    deleteProduct
+  } = useForm(initialForm, validationsForm);
+
 
   //funcion para ventana modal
 
@@ -117,7 +103,7 @@ export default function Admin() {
             <Modal.Title>Nuevo Producto</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <Form onSubmit={handleFormCreate}>
+            <Form onSubmit={handleCreateProd}>
               <Form.Group className="mb-3" controlId="formBasicName">
                 <Form.Label>Nombre</Form.Label>
                 <Form.Control
@@ -191,6 +177,7 @@ export default function Admin() {
                 <Form.Control
                   type="file"
                   name="filename"
+                  value={form.file}
                   onBlur={handleBlur}
                   onChange={handleChange}
                   required
@@ -198,12 +185,26 @@ export default function Admin() {
               </Form.Group>
 
               <Button variant="primary" type="submit">
-                Crear nuevo producto
+                Agregar
               </Button>
             </Form>
           </Modal.Body>
         </Modal>
-        {rowProds}
+
+        <div className="d-flex flex-column align-items-center flex-sm-row flex-wrap justify-content-sm-between mt-4">
+          <ProductList
+            items={prod}
+            onRemoveItem={(id) => {
+
+              deleteProduct(id);
+
+              const newItems = prod.filter((item) => item._id !== id);
+
+              setProd(newItems);
+              
+            }}
+          />
+        </div>
       </Container>
     </>
   );
