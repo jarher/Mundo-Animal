@@ -3,11 +3,13 @@ import { useState } from "react";
 import { APIHOST as host } from "../app.json";
 import SendingData from "./SendData";
 
+
 export const useForm = (initialForm, validateForm) => {
   const [form, setForm] = useState(initialForm);
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
   const [response, setResponse] = useState(null);
+  
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -108,6 +110,7 @@ export const useForm = (initialForm, validateForm) => {
         }
       );
     }
+    
   };
 
   const handleCreateProd = (e) => {
@@ -136,32 +139,33 @@ export const useForm = (initialForm, validateForm) => {
     }
   };
 
-  // const handleUpProd = (e) => {
-  //   e.preventDefault();
-  //   if (Object.keys(errors).length === 0) {
-      
-  //     SendingData(
-  //       false,
-  //       "delete",
-  //       `${host}/api/products/${id}`,
-  //       {
-  //         name: form.name,
-  //         category: form.category,
-  //         price: form.price,
-  //         description: form.description,
-  //         imgUrl: form.file,
-  //       },
-  //       (res) => {
-  //         alert("producto actualizado con éxito");
-  //         console.log(res);
-  //       },
-  //       (res) => {
-  //         alert("se produjo un error al intentar actualizar el producto");
-  //         console.log(res);
-  //       }
-  //     );
-  //   }
-  // };
+  const handleUpProd = (e) => {
+    e.preventDefault();
+
+    if (Object.keys(errors).length === 0) {
+      let id = e.target.querySelector("#prodId").value;
+      SendingData(
+        false,
+        "put",
+        `${host}/api/products/${id}`,
+        {
+          name: form.name,
+          category: form.category,
+          price: form.price,
+          description: form.description,
+          imgUrl: form.file,
+        },
+        (res) => {
+          alert("producto actualizado con éxito");
+          console.log(res);
+        },
+        (res) => {
+          alert("se produjo un error al intentar actualizar el producto");
+          console.log(res);
+        }
+      );
+    }
+  };
 
   const deleteProduct = (id) => {
     SendingData(
@@ -180,7 +184,6 @@ export const useForm = (initialForm, validateForm) => {
     );
   };
 
-
   const isLoggeIn = () => {
     const token = localStorage.getItem("token");
     if (token) {
@@ -190,6 +193,7 @@ export const useForm = (initialForm, validateForm) => {
       return false;
     }
   };
+
 
   return {
     form,
@@ -202,7 +206,7 @@ export const useForm = (initialForm, validateForm) => {
     handleRegister,
     handleContact,
     handleCreateProd,
-    // handleUpProd,
+    handleUpProd,
     deleteProduct,
   };
 };

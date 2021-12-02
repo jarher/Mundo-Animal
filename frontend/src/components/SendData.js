@@ -23,11 +23,25 @@ export default function SendingData(
       });
   }
 
+  if (method === "put") {
+    axios
+      .put(route, data)
+      .then((response) => {
+        success_func(response);
+      })
+      .catch((error) => {
+        error_func(error);
+      });
+  }
+
   if (method === "delete") {
-    axios.delete(route).then((response) => {
-      success_func(response)
-    }).catch((error) => {
-      error_func(error)
-    })
+    axios
+      .delete(route)
+      .then((response) => {
+        success_func(response);
+      })
+      .catch((error) => {
+        error_func(error);
+      });
   }
 }

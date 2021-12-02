@@ -19,7 +19,7 @@ const validationsForm = (form) => {
   let errors = {};
   let regexName = /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/;
   let regexCategory = /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/;
-  let regexNumber = /^[0-9\s]+$/;
+  // let regexNumber = /^[0-9\s]+$/;
   let regexDescription = /^.{1,255}$/;
 
   if (!form.name.trim()) {
@@ -34,11 +34,11 @@ const validationsForm = (form) => {
     errors.category = "No se aceptan signos diferentes a letras";
   }
 
-  if (!form.price.trim()) {
-    errors.number = "El campo precio es requerido";
-  } else if (!regexNumber.test(form.number.trim())) {
-    errors.number = "No se aceptan signos diferentes a números";
-  }
+  // if (!form.price.trim()) {
+  //   errors.number = "El campo precio es requerido";
+  // } else if (!regexNumber.test(form.number.trim())) {
+  //   errors.number = "No se aceptan signos diferentes a números";
+  // }
 
   if (!form.description.trim()) {
     errors.description = "El campo texto es requerido";
@@ -58,6 +58,7 @@ export default function Products({
   imagenUrl,
   onRemove = (f) => f,
 }) {
+
   const {
     form,
     errors,
@@ -66,11 +67,12 @@ export default function Products({
     handleChange,
     handleBlur,
     handleUpProd,
+    getId
   } = useForm(initialForm, validationsForm);
 
     const inputName = useRef();
     const inputCat = useRef();
-    const inputPrice = useRef();
+    // const inputPrice = useRef();
     const inputDesc = useRef();
 
     const editName = () => {
@@ -81,9 +83,9 @@ export default function Products({
       inputCat.current.disabled = false;
     };
 
-    const editPrice = () => {
-      inputPrice.current.disabled = false;
-    };
+    // const editPrice = () => {
+    //   inputPrice.current.disabled = false;
+    // };
 
     const editDesc = () => {
       inputDesc.current.disabled = false;
@@ -95,6 +97,12 @@ export default function Products({
         className="admin-form p-4 col-11 col-sm-5 mb-5 me-3"
         onSubmit={handleUpProd}
       >
+        <input
+          id="prodId"
+          name="prodId"
+          type="hidden"
+          value={_id}
+        />
         <Form.Group className="mb-3" controlId="formBasicFile">
           <Form.Control
             type="file"
@@ -168,18 +176,18 @@ export default function Products({
             className="me-3"
             type="number"
             placeholder={precio}
-            ref={inputPrice}
+            // ref={inputPrice}
             name="price"
             value={form.price}
             onChange={handleChange}
             onBlur={handleBlur}
-            disabled
+            required
           />
           <OverlayTrigger
             placement={"right"}
             overlay={<Tooltip>Editar</Tooltip>}
           >
-            <Button variant="light" onCLick={editPrice}>
+            <Button variant="light">
               <FaPencilAlt />
             </Button>
           </OverlayTrigger>
