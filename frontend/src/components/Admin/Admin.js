@@ -4,61 +4,47 @@ import { APIHOST as host } from "../../app.json";
 import { Container, Form, Modal, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import ProductList from "./ProductList";
-import { useForm } from "../useForm";
+import SendingData from "../SendData";
+import FormProduct from "./FormProducts";
 
-const initialForm = {
-  name: "",
-  category: "",
-  price: "",
-  description: "",
-  imgUrl: "",
-};
+// import sendImages from "../../services/UploadService";
+// import SendingData from "../SendData";
 
-const validationsForm = (form) => {
-  let errors = {};
-  let regexName = /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/;
-  let regexCategory = /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/;
-  let regexPrice = /^[0-9\s]+$/;
-  let regexDescription = /^.{1,255}$/;
-
-  if (!form.name.trim()) {
-    errors.name = "El campo nombre es requerido";
-  } else if (!regexName.test(form.name.trim())) {
-    errors.name = "No se aceptan signos diferentes a letras";
-  }
-
-  if (!form.category.trim()) {
-    errors.category = "El campo descripción es requerido";
-  } else if (!regexCategory.test(form.category.trim())) {
-    errors.category = "No se aceptan signos diferentes a letras";
-  }
-
-  if (!form.price.trim()) {
-    errors.price = "El campo de precio es requerido";
-  } else if (!regexPrice.test(form.price.trim())) {
-    errors.price = "No se aceptan signos diferentes a números";
-  }
-
-  if (!form.description.trim()) {
-    errors.description = "El campo descripción es requerido";
-  } else if (!regexDescription.test(form.description.trim())) {
-    errors.description = "ha superado el límite de palabras permitido";
-  }
-
-  return errors;
-};
 
 export default function Admin() {
 
   const [prod, setProd] = useState([]);
   const [show, setShow] = useState(false);
+  // const [file, setFile] = useState();
+  // const [pathImage, setPathImage] = useState(`${host}/upload.png`);
 
+  
+  
+//visualización previa de la imagen
+  // const onFileChange = (e) => {
+  //   if(e.target.files && e.target.files.length > 0) {
+  //     const file = e.target.files[0];
+  //     if(file.type.includes("image")){
+  //       const reader = new FileReader();
+  //       reader.readAsDataURL(file)
+
+  //       reader.onload = function load() {
+  //         setPathImage(reader.result)
+  //       }
+
+  //       setFile(file)
+  //     }else{
+  //       console.log("error al subir imagen")
+  //     }
+  //   }
+  // }
+
+  //obtener productos
   const getProducts = () => {
     axios
       .get(`${host}/api/products`)
       .then((response) => {
         setProd(response.data);
-        // console.log(response.data);
       })
       .catch((error) => {
         console.error(error);
@@ -69,15 +55,15 @@ export default function Admin() {
     getProducts();
   }, []);
 
-  //manejo del formulario
-  const {
-    form,
-    errors,
-    handleChange,
-    handleBlur,
-    handleCreateProd,
-    deleteProduct
-  } = useForm(initialForm, validationsForm);
+  //validación formulario
+  // const {
+  //   form,
+  //   errors,
+  //   handleChange,
+  //   handleBlur,
+  //   // handleCreateProd,
+  //   deleteProduct
+  // } = useForm(initialForm, validationsForm);
 
 
   //funcion para ventana modal
@@ -85,6 +71,23 @@ export default function Admin() {
   const handleClose = () => setShow(false);
 
   const handleShow = () => setShow(true);
+
+  const deleteProduct = (id) => {
+    SendingData(
+      false,
+      "delete",
+      `${host}/api/products/${id}`,
+      null,
+      (res) => {
+        alert("producto borrado con éxito");
+        console.log(res);
+      },
+      (res) => {
+        alert("error: no se pudo eliminar el producto");
+        console.log(res);
+      }
+    );
+  };
 
   return (
     <>
@@ -103,7 +106,8 @@ export default function Admin() {
             <Modal.Title>Nuevo Producto</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <Form onSubmit={handleCreateProd}>
+            <FormProduct />
+            {/* <Form onSubmit={handleCreateProd}>
               <Form.Group className="mb-3" controlId="formBasicName">
                 <Form.Label>Nombre</Form.Label>
                 <Form.Control
@@ -174,12 +178,15 @@ export default function Admin() {
 
               <Form.Group className="mb-3" controlId="formBasicImage">
                 <Form.Label>Sube una imagen</Form.Label>
+                <div className="col-3 mt-3 mb-3">
+                  <img src={pathImage} alt="producto-imagen" />
+                </div>
                 <Form.Control
                   type="file"
                   name="filename"
                   value={form.file}
                   onBlur={handleBlur}
-                  onChange={handleChange}
+                  onChange={onFileChange}
                   required
                 />
               </Form.Group>
@@ -187,7 +194,7 @@ export default function Admin() {
               <Button variant="primary" type="submit">
                 Agregar
               </Button>
-            </Form>
+            </Form> */}
           </Modal.Body>
         </Modal>
 
@@ -195,13 +202,11 @@ export default function Admin() {
           <ProductList
             items={prod}
             onRemoveItem={(id) => {
-
               deleteProduct(id);
 
               const newItems = prod.filter((item) => item._id !== id);
 
               setProd(newItems);
-              
             }}
           />
         </div>

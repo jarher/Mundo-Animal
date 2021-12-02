@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const jwt = require("express-jwt");
+const Storage = require("../config/multer");
+const multer = require("multer");
 
 const auth = jwt({
   secret: process.env.JWT_SECRET,
@@ -11,11 +13,14 @@ const ctrlProducts = require("../controllers/products");
 const ctrlAuth = require("../controllers/authentication");
 
 //products
+const uploader = multer({Storage});
+
+uploader.single("file");
 
 router
   .route("/products")
   .get(ctrlProducts.productsReadAll)
-  .post(ctrlProducts.productsCreate);
+  .post(ctrlProducts.productsCreate, uploader.single('file'));
 
 router
   .route("/products/:productid")

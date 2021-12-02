@@ -4,8 +4,9 @@ import { MdDelete } from "react-icons/md";
 import { IoIosCloudUpload } from "react-icons/io";
 import Button from "react-bootstrap/Button";
 import { FaPencilAlt } from "react-icons/fa";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useForm } from "../useForm";
+import { APIHOST as host } from "../../app.json";
 
 const initialForm = {
   name: "",
@@ -59,6 +60,8 @@ export default function Products({
   onRemove = (f) => f,
 }) {
 
+  const [pathImage, setPathImage] = useState(`${host}/upload.png`);
+
   const {
     form,
     errors,
@@ -97,13 +100,13 @@ export default function Products({
         className="admin-form p-4 col-11 col-sm-5 mb-5 me-3"
         onSubmit={handleUpProd}
       >
-        <input
-          id="prodId"
-          name="prodId"
-          type="hidden"
-          value={_id}
-        />
+        <input id="prodId" name="prodId" type="hidden" value={_id} />
         <Form.Group className="mb-3" controlId="formBasicFile">
+          <div className="d-flex justify-content-center mt-3 mb-3">
+            <div className="col-5 img-prod-adm">
+              <img src={pathImage} alt="product0-imagen" />
+            </div>
+          </div>
           <Form.Control
             type="file"
             placeholder="subir imagen"

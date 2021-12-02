@@ -113,32 +113,6 @@ export const useForm = (initialForm, validateForm) => {
     
   };
 
-  const handleCreateProd = (e) => {
-    e.preventDefault();
-    if (Object.keys(errors).length === 0) {
-      SendingData(
-        true,
-        "post",
-        `${host}/api/products`,
-        {
-          name: form.name,
-          category: form.category,
-          price: form.price,
-          description: form.description,
-          imgUrl: form.file,
-        },
-        (res) => {
-          alert("¡producto creado con éxito!");
-          console.log(res);
-        },
-        (res) => {
-          alert("error: ocurrio un problema, inténtalo de nuevo");
-          console.log(res);
-        }
-      );
-    }
-  };
-
   const handleUpProd = (e) => {
     e.preventDefault();
 
@@ -167,23 +141,6 @@ export const useForm = (initialForm, validateForm) => {
     }
   };
 
-  const deleteProduct = (id) => {
-    SendingData(
-      false,
-      "delete",
-      `${host}/api/products/${id}`,
-      null,
-      (res) => {
-        alert("producto borrado con éxito");
-        console.log(res);
-      },
-      (res) => {
-        alert("error: no se pudo eliminar el producto");
-        console.log(res);
-      }
-    );
-  };
-
   const isLoggeIn = () => {
     const token = localStorage.getItem("token");
     if (token) {
@@ -205,8 +162,6 @@ export const useForm = (initialForm, validateForm) => {
     handleLogin,
     handleRegister,
     handleContact,
-    handleCreateProd,
     handleUpProd,
-    deleteProduct,
   };
 };
