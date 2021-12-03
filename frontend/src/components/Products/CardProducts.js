@@ -1,17 +1,16 @@
 import Button from "@restart/ui/esm/Button";
 import { Card } from "react-bootstrap";
-import img from "../../assets/images/products/whiskas-gatitos.jpg";
 
 export default function CardProducts (props) {
     return (
-      <Card data-category={props.category}>
+      <Card>
         <Card.Header>{props.title}</Card.Header>
-        <Card.Body className="d-flex flex-row">
-          <div className="col-5">
-            <Card.Img variant="top" src={img} />
+        <Card.Body className="d-flex flex-column">
+          <div className="col-12">
+            <Card.Img variant="top" src={props.img} />
           </div>
 
-          <div className="col-6 ms-3">
+          <div className="col-12">
             <Card.Text>
               <p>
                 <span className="text-info fw-bold">Descripción: </span>

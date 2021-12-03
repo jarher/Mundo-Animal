@@ -51,7 +51,7 @@
 }
 
 #link-products {
-  display: inline-flex;
+  text-align: center;
 }
 #social-nav-menu {
   list-style: none;
@@ -80,8 +80,5 @@
   .card {
     margin-top: 5%;
   }
-  
-  #link-products {
-    display: none;
-  }
+
 }

@@ -156,7 +156,7 @@ export default function FormProduct () {
           value={form.file}
           onBlur={handleBlur}
           //   onChange={onFileChange}
-          required
+          
         />
       </Form.Group>
 

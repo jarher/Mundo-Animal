@@ -37,6 +37,20 @@
   margin-top: 5%;
   display: block;
 }
+.card-header {
+font-size:1rem!important;
+}
+.linkNav:active{
+  background-color: var(--blue-light-1);
+  color:var(--bs-light);
+}
+.linkNav:hover{
+   background-color: var(--blue-light-1);
+   color:var(--bs-light);
+}
+#prod-items-nav{
+  z-index: 1;
+}
 
 @keyframes buy {
   0% {
@@ -53,6 +67,17 @@
   100% {
     transform: scale(1);
   }
+}
+@media (max-width:768px){
+#prod-items-nav-btn{
+font-size: 1.5rem;
+color:var(--blue-light-1);
+position: sticky;
+top:25px;
+display:inline-block;
+left: 2%;
+
+}
 }
 @media (min-width: 769px) {
   .card-cont {

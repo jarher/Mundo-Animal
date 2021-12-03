@@ -2,26 +2,14 @@ import { Col, Row } from "react-bootstrap";
 import CardProducts from "./CardProducts";
 import axios from "axios";
 import { APIHOST as host } from "../../app.json";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import img from "../../assets/images/cuidado-de-mascotas.png";
+import { FaArrowCircleRight } from "react-icons/fa";
 
 export default function Products() {
+
   const [prod, setProd] = useState([]);
-
-  const changeClass = (e) => {
-    const links_prod = document.querySelectorAll(".linkNav");
-
-    let data_index = e.target.dataset.index;
-
-    links_prod.forEach((link, index) => {
-      if (data_index == index) {
-        link.classList.add("pr-active");
-      } else {
-        link.classList.remove("pr-active");
-      }
-    });
-  };
-
+  const navProd = useRef();
   const getProducts = () => {
     axios
       .get(`${host}/api/products`)
@@ -37,17 +25,42 @@ export default function Products() {
     getProducts();
   }, []);
 
+  const changeClass = (e) => {
+
+    const nvPrd = document.getElementById("prod-items-nav");
+
+    nvPrd.classList.add("d-none");
+
+    let data_category = e.target.dataset.category;
+
+    let products = document.querySelectorAll(".card-cont");
+
+    products.forEach((product )=> {
+      if(product.dataset.category === data_category){
+        product.style.display = "block"
+      }else{
+        product.style.display = "none";
+      }
+    });
+   
+  };
+
+  const showProdNav = (e) => {
+    navProd.current.classList.remove('d-none');
+  }
+
   const Prods = prod.map(
     (el, index) => (
       <Col
         className="mb-3 ms-md-3 col-sm-5 col-9 card-cont"
         data-number={index}
+        data-category={el.categoria}
       >
         <CardProducts
           title={el.nombre}
-          category={el.categoria}
           description={el.descripcion}
           price={el.precio}
+          img={el.imagenUrl}
         />
       </Col>
     ),
@@ -55,31 +68,53 @@ export default function Products() {
   );
 
   if (Prods.length === 0) return <p>No hay productos </p>;
+
   return (
     <>
-      <div className="d-flex flex-column flex-sm-row">
-        <Col lg={2} md={3} className="d-none d-md-block">
+      <div className="d-flex flex-column flex-sm-row position-relative">
+        <FaArrowCircleRight id="prod-items-nav-btn" className="d-md-none" onClick={showProdNav}/>
+        <Col lg={2} md={3} className="d-none d-md-block" id="prod-items-nav" ref={navProd}>
           <ul className="productNav pt-md-3">
             <li
-              className="linkNav pr-active"
+              className="linkNav"
               onClick={changeClass}
-              data-index="0"
+              data-category="alimento para aves"
             >
               Alimento para Aves
             </li>
-            <li className="linkNav" onClick={changeClass} data-index="1">
+            <li
+              className="linkNav"
+              onClick={changeClass}
+              data-category="alimento para perros"
+            >
               Alimento para Perros
             </li>
-            <li className="linkNav" onClick={changeClass} data-index="2">
+            <li
+              className="linkNav"
+              onClick={changeClass}
+              data-category="alimento para gatos"
+            >
               Alimento para Gatos
             </li>
-            <li className="linkNav" onClick={changeClass} data-index="3">
+            <li
+              className="linkNav"
+              onClick={changeClass}
+              data-category="accesorios"
+            >
               Accesorios
             </li>
-            <li className="linkNav" onClick={changeClass} data-index="4">
+            <li
+              className="linkNav"
+              onClick={changeClass}
+              data-category="juguetes"
+            >
               Juguetes
             </li>
-            <li className="linkNav" onClick={changeClass} data-index="5">
+            <li
+              className="linkNav"
+              onClick={changeClass}
+              data-category="utiles de aseo"
+            >
               Productos de Higiene
             </li>
             <div id="img-nav-prod">
@@ -87,7 +122,7 @@ export default function Products() {
             </div>
           </ul>
         </Col>
-        <div className="d-flex flex-sm-row flex-wrap mt-4 justify-content-start ms-md-3">
+        <div className="d-flex justify-content-center  flex-sm-row flex-wrap mt-4 justify-content-sm-evenly justify-content-md-start ms-md-3">
           {Prods}
         </div>
       </div>

@@ -1,10 +1,5 @@
 const mongoose = require('mongoose');
 
-const Image = new mongoose.Schema({
-  urlFile:{type:String},
-  dateUpload:{type:Date, default:Date.now()}
-})
-
 const productSchema = new mongoose.Schema({
   nombre: {
     type: String,
@@ -22,7 +17,10 @@ const productSchema = new mongoose.Schema({
     type: String,
     require: true,
   },
-  imagenUrl:Image
+  imagenUrl:{
+    type:String,
+    require:true
+  }
 });
 
 

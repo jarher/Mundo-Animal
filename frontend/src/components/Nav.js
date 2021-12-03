@@ -33,27 +33,6 @@ export default function NavToggle() {
             Productos
           </Link>
         </Nav.Item>
-        <NavDropdown
-          title="Productos"
-          onClick={changeIcon}
-          className="d-md-none"
-        >
-          <NavDropdown.Item eventKey="4.1">
-            Alimentos para aves
-          </NavDropdown.Item>
-          <NavDropdown.Item eventKey="4.2">
-            Alimentos para perros
-          </NavDropdown.Item>
-          <NavDropdown.Item eventKey="4.3">
-            Alimentos para gatos
-          </NavDropdown.Item>
-          <NavDropdown.Item eventKey="4.4">Accesorios</NavDropdown.Item>
-          <NavDropdown.Item eventKey="4.5">Juguetes</NavDropdown.Item>
-          <NavDropdown.Item eventKey="4.6">
-            Elementos de Higiene
-          </NavDropdown.Item>
-          <NavDropdown.Divider />
-        </NavDropdown>
         <Nav.Item>
           <a href="/#map" onClick={changeIcon}>
             ubicación

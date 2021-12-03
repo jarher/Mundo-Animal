@@ -1,5 +1,4 @@
 import { Form, OverlayTrigger, Tooltip } from "react-bootstrap";
-import img from "../../assets/images/products/whiskas-gatitos.jpg";
 import { MdDelete } from "react-icons/md";
 import { IoIosCloudUpload } from "react-icons/io";
 import Button from "react-bootstrap/Button";
@@ -104,7 +103,7 @@ export default function Products({
         <Form.Group className="mb-3" controlId="formBasicFile">
           <div className="d-flex justify-content-center mt-3 mb-3">
             <div className="col-5 img-prod-adm">
-              <img src={pathImage} alt="product0-imagen" />
+              <img src={pathImage} alt="producto-imagen" />
             </div>
           </div>
           <Form.Control

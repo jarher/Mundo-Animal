@@ -17,3 +17,26 @@ form button:hover{
 form button a:hover{
     color:var(--bs-blue);
 }
+
+#map h5{
+  color:var(--blue-light-2);
+}
+#main-title {
+  color:var(--bs-light);
+  text-decoration: none;
+}
+@media (max-width: 768px) {
+  
+  #map-location {
+    width: 360px;
+    height: 360px;
+    display: block;
+  }
+}
+@media (min-width: 769px) {
+  
+  #map-location {
+    width: 400px;
+    height: 250px;
+  }
+}
